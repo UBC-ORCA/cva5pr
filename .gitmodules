@@ -4,3 +4,6 @@
 [submodule "embench"]
 	path = embench
 	url = https://gitlab.com/sfu-rcl/taiga-embench.git
+[submodule "riscv-compliance"]
+	path = riscv-compliance
+	url = https://gitlab.com/sfu-rcl/taiga-riscv-compliance.git
