@@ -7,3 +7,6 @@
 [submodule "riscv-compliance"]
 	path = riscv-compliance
 	url = https://gitlab.com/sfu-rcl/taiga-riscv-compliance.git
+[submodule "taiga-dev"]
+	path = taiga-dev
+	url = https://gitlab-ci-token:s_6XDwuHxxraYdMq7YPf@gitlab.com/sfu-rcl/Taiga-dev.git
