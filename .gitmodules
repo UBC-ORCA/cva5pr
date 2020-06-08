@@ -10,3 +10,6 @@
 [submodule "taiga-dev"]
 	path = taiga-dev
 	url = https://gitlab-ci-token:s_6XDwuHxxraYdMq7YPf@gitlab.com/sfu-rcl/Taiga-dev.git
+[submodule "gcc"]
+	path = gcc
+	url = https://github.com/gcc-mirror/gcc.git
