@@ -16,3 +16,6 @@
 [submodule "verilator"]
 	path = verilator
 	url = http://git.veripool.org/git/verilator
+[submodule "binutils-gdb"]
+	path = binutils-gdb
+	url = git://sourceware.org/git/binutils-gdb.git
