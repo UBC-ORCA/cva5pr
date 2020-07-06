@@ -13,51 +13,41 @@ else
     mkdir RISCV-compiler
     mkdir riscv32-unknown-elf
     mv riscv32-unknown-elf/ RISCV-compiler/
+    mkdir logs
 fi
 
-echo "Installing binutils-gdb..."
-cd $ROOT_DIR/binutils-gdb
-git checkout binutils-2_34
-mkdir build-binutils
-cd build-binutils/
-CC=gcc ../configure --target=$TARGET --prefix=$PREFIX --disable-sim --disable-gdb --disable-readline --disable-libdecnumber --with-expat=yes
-make all -j8
-make install -j8
-cd ../..
+echo "Start building binutils-gdb..."
+export RESULT=OK
+. $ROOT_DIR/scripts/binutils-gdb.sh > logs/binutils-gdb.log
+echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" > logs/build.log
+echo "Done building binutils-gdb..."
 
-echo "Installing gcc..."
-cd $ROOT_DIR/gcc/
-git checkout releases/gcc-10
-mkdir build-gcc
-cd build-gcc/
-../configure --target=$TARGET --with-arch=rv32im --with-abi=ilp32 --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld  --disable-shared --disable-threads --disable-tls --enable-languages=c,c++ --with-system-zlib --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-multilib --disable-tm-clone-registry CFLAGS_FOR_TARGET="-O2 -mcmodel=medlow"
-make all-gcc -j8
-make install-gcc -j8
-cd ../..
+echo "Start building first-gcc..."
+export RESULT=OK
+. $ROOT_DIR/scripts/first-gcc.sh > logs/first-gcc.log
+echo "Building first-gcc (logfile: first-gcc.log) - $RESULT" > logs/build.log
+echo "Done building first-gcc..."
 
-echo "Installing picolibc..."
-cd $ROOT_DIR/picolibc/
-mkdir mkdir build-riscv32-unknown-elf
-cd build-riscv32-unknown-elf
-../do-riscv-configure
-ninja
-ninja install
+echo "Start building newlib..."
+export RESULT=OK
+. $ROOT_DIR/scripts/newlib.sh > logs/newlib.log
+echo "Building newlib (logfile: newlib.log) - $RESULT" > logs/build.log
+echo "Done building newlib..."
 
-echo "Installing gcc..."
-cd $ROOT_DIR/gcc/
-git checkout releases/gcc-10
-mkdir build-gcc
-cd build-gcc/
-../configure --target=$TARGET --with-arch=rv32im --with-abi=ilp32 --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld  --disable-shared --disable-threads --disable-tls --enable-languages=c,c++ --with-system-zlib --disable-libmudflap --disable-libssp --disable-libquadmath --disable-libgomp --disable-nls --disable-multilib --disable-tm-clone-registry CFLAGS_FOR_TARGET="-O2 -mcmodel=medlow"
-make all-gcc -j8
-make install-gcc -j8
-cd ../..
+echo "Start building final-gcc..."
+export RESULT=OK
+. $ROOT_DIR/scripts/final-gcc.sh > logs/final-gcc.log
+echo "Building final-gcc (logfile: final-gcc.log) - $RESULT" > logs/build.log
+echo "Done building final-gcc..."
 
-echo "Installing verilator..."
-cd $ROOT_DIR/verilator
-git pull
-git checkout stable
-autoconf
-./configure
-make
-sudo make install
+echo "Start building picolibc..."
+export RESULT=OK
+. $ROOT_DIR/scripts/picolibc.sh > logs/picolibc.log
+echo "Building picolibc (logfile: picolibc.log) - $RESULT" > logs/build.log
+echo "Done building picolibc..."
+
+echo "Start building verilator..."
+export RESULT=OK
+. $ROOT_DIR/scripts/verilator.sh > logs/verilator.log
+echo "Building verilator (logfile: verilator.log) - $RESULT" > logs/build.log
+echo "Done building verilator..."

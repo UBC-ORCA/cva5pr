@@ -19,3 +19,6 @@
 [submodule "binutils-gdb"]
 	path = binutils-gdb
 	url = git://sourceware.org/git/binutils-gdb.git
+[submodule "newlib-cygwin"]
+	path = newlib-cygwin
+	url = git://sourceware.org/git/newlib-cygwin.git
