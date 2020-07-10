@@ -8,11 +8,11 @@ CC=gcc ../configure --target=$TARGET --prefix=$PREFIX --disable-sim --disable-gd
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
 fi
-make all -j$1
+make all
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
 fi
-make install -j$1
+make install
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
 fi
