@@ -10,7 +10,7 @@ else
 fi
 mkdir build-riscv32-unknown-elf
 cd build-riscv32-unknown-elf
-../do-riscv-configure
+../do-riscv-configure --prefix=$PREFIX
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
     echo "Building picolibc (logfile: picolibc.log) - $RESULT" >> ../../logs/build.log
