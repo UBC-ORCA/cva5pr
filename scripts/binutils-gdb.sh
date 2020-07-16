@@ -14,21 +14,21 @@ cd build-binutils/
 CC=gcc ../configure --target=$TARGET --prefix=$PREFIX --disable-sim --disable-gdb --disable-readline --disable-libdecnumber --with-expat=yes
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
-    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" > ../../logs/build.log
+    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" >> ../../logs/build.log
     exit 1
 fi
 make all
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
-    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" > ../../logs/build.log
+    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" >> ../../logs/build.log
     exit 1
 fi
 make install
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
-    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" > ../../logs/build.log
+    echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" >> ../../logs/build.log
     exit 1
 fi
 cd ../..
-echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" > logs/build.log
+echo "Building binutils-gdb (logfile: binutils-gdb.log) - $RESULT" >> logs/build.log
 
