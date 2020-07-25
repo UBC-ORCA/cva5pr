@@ -1,6 +1,8 @@
 #!/bin/bash
-
 cd $PWD/picolibc/
+git pull
+git checkout master
+
 if [ -d "$PWD/build-riscv32-unknown-elf" ]
 then 
     echo "Directory build-riscv32-unknown-elf already exists. Removing..."
