@@ -1,8 +1,6 @@
 #!/bin/bash
 
 cd $PWD/verilator
-git pull
-git checkout stable
 autoconf
 ./configure --prefix=$PREFIX
 if [ $? -ne 0 ]; then

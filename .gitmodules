@@ -1,24 +1,32 @@
 [submodule "picolibc"]
 	path = picolibc
-	url = https://gitlab.com/sfu-rcl/taiga-picolibc.git
+	url = git@gitlab.com:sfu-rcl/taiga-picolibc.git
+	branch = master
 [submodule "embench"]
 	path = embench
-	url = https://gitlab.com/sfu-rcl/taiga-embench.git
+	url = git@gitlab.com:sfu-rcl/taiga-embench.git
+	branch = taiga-picolibc
 [submodule "riscv-compliance"]
 	path = riscv-compliance
-	url = https://gitlab.com/sfu-rcl/taiga-riscv-compliance.git
+	url = git@gitlab.com:sfu-rcl/taiga-riscv-compliance.git
+	branch = taiga-sim
 [submodule "taiga-dev"]
 	path = taiga-dev
-	url = https://gitlab-ci-token:s_6XDwuHxxraYdMq7YPf@gitlab.com/sfu-rcl/Taiga-dev.git
+	url = git@gitlab.com:sfu-rcl/Taiga-dev.git
+	branch = system-wrapper
 [submodule "gcc"]
 	path = gcc
 	url = https://github.com/gcc-mirror/gcc.git
+	branch = releases/gcc-10
 [submodule "verilator"]
 	path = verilator
 	url = http://git.veripool.org/git/verilator
+	branch = stable
 [submodule "binutils-gdb"]
 	path = binutils-gdb
 	url = git://sourceware.org/git/binutils-gdb.git
+	branch = binutils-2_35
 [submodule "newlib-cygwin"]
 	path = newlib-cygwin
 	url = git://sourceware.org/git/newlib-cygwin.git
+	branch = master

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cd $PWD/gcc/
-git checkout releases/gcc-10
 if [ -d "$PWD/build-gcc" ]
 then 
     echo "Directory build-gcc already exists. Removing..."

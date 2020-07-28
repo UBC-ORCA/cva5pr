@@ -1,7 +1,5 @@
 #!/bin/bash
 cd $PWD/picolibc/
-git pull
-git checkout master
 
 if [ -d "$PWD/build-riscv32-unknown-elf" ]
 then 
@@ -12,7 +10,7 @@ else
 fi
 mkdir build-riscv32-unknown-elf
 cd build-riscv32-unknown-elf
-../do-riscv-configure --prefix=$PREFIX
+../do-riscv-configure --prefix=$PREFIX --buildtype=debugoptimized
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
     echo "Building picolibc (logfile: picolibc.log) - $RESULT" >> ../../logs/build.log
