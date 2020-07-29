@@ -30,3 +30,7 @@
 	path = tool-chain/newlib-cygwin
 	url = git://sourceware.org/git/newlib-cygwin.git
 	branch = master
+[submodule "benchmarks/taiga-coremark"]
+	path = benchmarks/taiga-coremark
+	url = git@gitlab.com:sfu-rcl/taiga-coremark.git
+	branch = master
