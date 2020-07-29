@@ -121,28 +121,30 @@ run-compliance-tests-verilator: $(TAIGA_SIM)
 
 ###############################################################
 #Dhrystone
+DHRYSTONE_DIR=benchmarks/taiga-dhrystone
 .PHONY: run-dhrystone-verilator
 run-dhrystone-verilator : $(TAIGA_SIM)
 	mkdir -p logs/verilator
-	$(MAKE) -C taiga-dhrystone all
+	$(MAKE) -C $(DHRYSTONE_DIR) all
 	$(TAIGA_SIM) \
 	  "/dev/null"\
 	  "/dev/null"\
-	  benchmarks/taiga-dhrystone/dhrystone.hw_init\
+	  $(DHRYSTONE_DIR)/dhrystone.hw_init\
 	  $(VERILATOR_TRACE_FILE)\
 	  > logs/verilator/dhrystone.log
 ###############################################################
 
 ###############################################################
 #Example C Project
+EXAMPLE_C_PROJECT_DIR=benchmarks/taiga-example-c-project
 .PHONY: run-example-c-project-verilator
 run-example-c-project-verilator : $(TAIGA_SIM)
 	mkdir -p logs/verilator
-	$(MAKE) -C taiga-example-c-project all
+	$(MAKE) -C $(EXAMPLE_C_PROJECT_DIR) all
 	$(TAIGA_SIM) \
 	  "/dev/null"\
 	  "/dev/null"\
-	  benchmarks/taiga-example-c-project/hello_world.hw_init\
+	  $(EXAMPLE_C_PROJECT_DIR)/hello_world.hw_init\
 	  $(VERILATOR_TRACE_FILE)\
 	  > logs/verilator/hello_world.log
 ###############################################################

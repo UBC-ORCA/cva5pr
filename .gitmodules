@@ -11,9 +11,9 @@
 	url = git@gitlab.com:sfu-rcl/taiga-riscv-compliance.git
 	branch = taiga-sim
 [submodule "taiga-dev"]
-	path = taiga-dev
+	path = taiga
 	url = git@gitlab.com:sfu-rcl/Taiga-dev.git
-	branch = system-wrapper
+	branch = master
 [submodule "gcc"]
 	path = tool-chain/gcc
 	url = https://github.com/gcc-mirror/gcc.git
@@ -21,7 +21,7 @@
 [submodule "verilator"]
 	path = tool-chain/verilator
 	url = http://git.veripool.org/git/verilator
-	branch = stable
+	branch = master
 [submodule "binutils-gdb"]
 	path = tool-chain/binutils-gdb
 	url = git://sourceware.org/git/binutils-gdb.git
