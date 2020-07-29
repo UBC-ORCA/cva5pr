@@ -37,3 +37,6 @@
 [submodule "benchmarks/taiga-dhrystone"]
 	path = benchmarks/taiga-dhrystone
 	url = git@gitlab.com:sfu-rcl/taiga-dhrystone.git
+[submodule "benchmarks/taiga-example-c-project"]
+	path = benchmarks/taiga-example-c-project
+	url = git@gitlab.com:sfu-rcl/taiga-example-c-project.git
