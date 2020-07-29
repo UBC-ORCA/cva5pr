@@ -34,3 +34,6 @@
 	path = benchmarks/taiga-coremark
 	url = git@gitlab.com:sfu-rcl/taiga-coremark.git
 	branch = master
+[submodule "benchmarks/taiga-dhrystone"]
+	path = benchmarks/taiga-dhrystone
+	url = git@gitlab.com:sfu-rcl/taiga-dhrystone.git
