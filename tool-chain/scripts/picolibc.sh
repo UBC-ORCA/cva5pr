@@ -12,7 +12,7 @@ fi
 mkdir build
 cd build
 
-../do-riscv-configure --prefix=$PREFIX --buildtype=debugoptimized
+../do-riscv-taiga-configure --prefix=$PREFIX --buildtype=debugoptimized
 if [ $? -ne 0 ]; then
     export RESULT=FAIL
     echo "Building picolibc (logfile: picolibc.log) - $RESULT" >> $TAIGA_PROJECT_ROOT/logs/tool-chain/picolibc.log
