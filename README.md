@@ -32,7 +32,16 @@ source settings.sh
 ./build-tool-chain.sh
 ```
 
-It is very likely that you will encounter errors while builing the tool-chain if you haven't built a cross-compiled tool-chain on your system before.  If you encounter an error, each stage of the build is logged in: **`logs/tool-chain`**
+It is very likely that you will encounter errors while building the tool-chain if you haven't built a cross-compiled tool-chain on your system before. **We suggest you read the next section to reduce the possibility of build errors**, as currently if the build was to fail, it would start from the first library being built even if some libraries were successfully built/installed.
+
+## Common Build Errors
+
+### GCC Prerequisites
+There are several dependencies that GCC has. From [this website](https://gcc.gnu.org/wiki/InstallingGCC), we learn we can run the following command *within the GCC installation folder* to install the perquisites:
+
+<pre>
+./contrib/download_prerequisites
+</pre>
 
 ## Makefile
 
