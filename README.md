@@ -1,3 +1,7 @@
+#Additional Wikis
+
+This readme contains the steps to build the toolchain required to run Benchmarks on Taiga in Verilator as well as using our project Makefile. Head to our [Wiki Page](https://gitlab.com/sfu-rcl/taiga-project/-/wikis/home) for additional tutorials/documentation.
+
 # Taiga Project
 
 Top-level system wrapper for the Taiga Processor.
