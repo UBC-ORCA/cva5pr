@@ -1,6 +1,12 @@
 # Taiga Project Wiki
 
-This readme contains the steps to build the toolchain required to run Benchmarks on Taiga in Verilator as well as using our project Makefile. Head to our [Wiki Page](https://gitlab.com/sfu-rcl/taiga-project/-/wikis/home) for additional tutorials/documentation.
+This readme contains the steps to build the toolchain required to run Benchmarks on Taiga in Verilator as well as using our project Makefile. 
+
+Head to our [Wiki Page](https://gitlab.com/sfu-rcl/taiga-project/-/wikis/home) for additional tutorials/documentation detailing:
+- How to run through simulation
+- How to run through hardware
+- Adding your own functional units to processor pipeline
+- Recommended readings, SystemVerilog resources, etc...
 
 # Taiga Project
 
@@ -15,6 +21,7 @@ Always run, from the root project directory, before using any other scripts or M
 source settings.sh
 ```
 
+taiga-project will download and install specific versions of the tool-chain, even if you have part of the tool-chain installed due to previous projects, we heavily suggest that the versions downloaded by the scripts should be used.
 
 ## Getting Started
 **Step 1:** Download and setup the project:
@@ -38,6 +45,9 @@ source settings.sh
 
 It is very likely that you will encounter errors while building the tool-chain if you haven't built a cross-compiled tool-chain on your system before. **We suggest you read the next section to reduce the possibility of build errors**, as currently if the build was to fail, it would start from the first library being built even if some libraries were successfully built/installed.
 
+To speed up the installation process, add the line:
+`export MAKEFLAGS='-j 8'` (or however many cores you want to use) to the start of `build-tool-chain.sh`
+
 ## Common Build Errors
 
 ### GCC Prerequisites
@@ -46,6 +56,14 @@ There are several dependencies that GCC has. From [this website](https://gcc.gnu
 <pre>
 ./contrib/download_prerequisites
 </pre>
+
+### Picolibc Prequisites
+There are several dependencies that Picolib has. Both Ninja and Mesen have to be installed beforehand. How to install these depends on your OS system.
+
+(Ninja)[https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages]
+(Mesen)[https://mesonbuild.com/Quick-guide.html]
+
+
 
 ## Makefile
 
