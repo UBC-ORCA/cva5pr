@@ -20,6 +20,6 @@ do
 	mkdir -p $OUTPUT_DIR/config_$i
 	cp $TAIGA_DIR/core/taiga_config.sv $OUTPUT_DIR/config_$i
 	cp $EMBENCH_LOG_DIR/../embench.log $OUTPUT_DIR/config_$i
-	python3 $TAIGA_PROJECT_ROOT/tool-chain/scripts/verilator_graphs.py > $OUTPUT_DIR/config_$i/config_"$i"_table.log
+	#python3 $TAIGA_PROJECT_ROOT/tool-chain/scripts/verilator_graphs.py > $OUTPUT_DIR/config_$i/config_"$i"_table.log
 done
 
