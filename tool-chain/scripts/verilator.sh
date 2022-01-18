@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd $TAIGA_PROJECT_ROOT/tool-chain/verilator
-git checkout v4.106
+git checkout stable
 
 autoconf
 ./configure --prefix=$PREFIX
