@@ -28,17 +28,20 @@ cubic \
 edn \
 huffbench \
 matmult-int \
+md5sum \
 minver \
 nbody \
 nettle-aes \
 nettle-sha256 \
 nsichneu \
 picojpeg \
+primecount \
 qrduino \
 sglib-combined \
 slre \
 st \
 statemate \
+tarfind \
 ud \
 wikisort
 
@@ -51,7 +54,7 @@ embench_logs = $(addprefix $(EMBENCH_LOG_DIR)/, $(addsuffix .log, $(EMBENCH_BENC
 .PHONY: build-embench
 build-embench :
 	cd $(EMBENCH_DIR);\
-	./build_all.py --clean --builddir=build --arch=riscv32 --chip=generic --board=taiga-picolibc --cflags="--specs=picolibc.specs -march=rv32im -mabi=ilp32 -mcmodel=medlow -O3 -ffunction-sections" --ldflags="--specs=picolibc.specs -Xlinker --defsym=__mem_size=131072 -Wl,--print-memory-usage" --cc-input-pattern="-c {0}" --user-libs="-lm"
+	./build_all.py --clean --builddir=build --arch=riscv32 --chip=generic --board=taiga-picolibc --cflags="--specs=picolibc.specs --crt0=hosted -march=rv32im -mabi=ilp32 -mcmodel=medlow -O2 -ffunction-sections" --ldflags="--specs=picolibc.specs --crt0=hosted -Xlinker --defsym=__mem_size=131072 -Wl,--print-memory-usage" --cc-input-pattern="-c {0}" --user-libs="-lm"
 	mkdir -p $(EMBENCH_DIR)/build/bin
 	$(foreach x,$(EMBENCH_BENCHMARKS), mv $(EMBENCH_DIR)/build/src/$(x)/$(x) $(EMBENCH_DIR)/build/bin/$(x);)
 	
@@ -154,5 +157,5 @@ clean-logs:
 	rm -rf logs/verilator
 
 .PHONY: clean
-clean : clean-logs clean-taiga-sim
+clean : clean-taiga-sim
 

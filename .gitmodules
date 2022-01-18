@@ -1,7 +1,7 @@
 [submodule "picolibc"]
 	path = tool-chain/picolibc
 	url = git@gitlab.com:sfu-rcl/taiga-picolibc.git
-	branch = master
+	branch = main
 [submodule "embench"]
 	path = benchmarks/embench
 	url = git@gitlab.com:sfu-rcl/taiga-embench.git
@@ -17,7 +17,7 @@
 [submodule "gcc"]
 	path = tool-chain/gcc
 	url = https://github.com/gcc-mirror/gcc.git
-	branch = releases/gcc-10
+	branch = releases/gcc-11
 [submodule "verilator"]
 	path = tool-chain/verilator
 	url = http://git.veripool.org/git/verilator
@@ -25,7 +25,7 @@
 [submodule "binutils-gdb"]
 	path = tool-chain/binutils-gdb
 	url = git://sourceware.org/git/binutils-gdb.git
-	branch = binutils-2_35-branch
+	branch = binutils-2_36-branch
 [submodule "newlib-cygwin"]
 	path = tool-chain/newlib-cygwin
 	url = git://sourceware.org/git/newlib-cygwin.git
