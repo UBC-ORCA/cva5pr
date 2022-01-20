@@ -15,27 +15,37 @@ Top-level system wrapper for the Taiga Processor.
 
 ### Important
 
-Always run, from the root project directory, before using any other scripts or Makefiles:
+Always run, from the root project directory, before using any other scripts or Makefiles. This has to be used each time a new terminal is used:
 
 ```
 source settings.sh
 ```
-
-taiga-project will download and install specific versions of the tool-chain, even if you have part of the tool-chain installed due to previous projects, we heavily suggest that the versions downloaded by the scripts should be used.
+taiga-project will download and install specific versions of the tool-chain, even if you have part of the tool-chain installed due to previous projects, we strongly suggest that the versions downloaded by the scripts should be used.
 
 ## Getting Started
-**Step 1:** Download and setup the project:
+**Step 1:** Set up the build environment
+
+On Debian based distributions (including Ubuntu), various packages need to be present on the host and can be installed with:
+
+```
+sudo apt-get install git gcc g++ make texinfo bison flex libgmp-dev libmpfr-dev libmpc-dev ninja-build meson autoconf
+```
+
+Note that `libgmp-dev`, `libmpfr-dev`, and `libmpc-dev` are required for building `gcc`. An alternative method to installing these packages is instead running
+```./contrib/download_prerequisites```
+in the `gcc` source directory. See [this website](https://gcc.gnu.org/wiki/InstallingGCC) for more details.
+
+`picolibc` depends on `ninja-build` and `meson`. Consult their respective websites for alternative installation methods. ([ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages), [meson](https://mesonbuild.com/Quick-guide.html)).
+
+**Step 2:** Download and set up the project:
+
 ```
 git clone git@gitlab.com:sfu-rcl/taiga-project.git
 cd taiga-project
 git submodule update --init
 ```
 
-**Step 2:** From the root project directory, source the settings script which sets all needed environment variables.
-
-```
-source settings.sh
-```
+To save on bandwidth, you may want to shallowly clone some of the submodules yourself. You can do this by making use of the `--depth 1` and `--branch branchname` flags in the `git clone` command.
 
 **Step 3:** From the root project directory, build the toolchain.
 
@@ -43,26 +53,8 @@ source settings.sh
 ./build-tool-chain.sh
 ```
 
-It is very likely that you will encounter errors while building the tool-chain if you haven't built a cross-compiled tool-chain on your system before. **We suggest you read the next section to reduce the possibility of build errors**, as currently if the build was to fail, it would start from the first library being built even if some libraries were successfully built/installed.
-
 To speed up the installation process, add the line:
-`export MAKEFLAGS='-j 8'` (or however many cores you want to use) to the start of `build-tool-chain.sh`
-
-## Common Build Errors
-
-### GCC Prerequisites
-There are several dependencies that GCC has. From [this website](https://gcc.gnu.org/wiki/InstallingGCC), we learn we can run the following command *within the GCC installation folder* to install the perquisites:
-
-<pre>
-./contrib/download_prerequisites
-</pre>
-
-### Picolibc Prequisites
-There are several dependencies that Picolib has. Both Ninja and Mesen have to be installed beforehand. How to install these depends on your OS system.
-
-(Ninja)[https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages]
-(Mesen)[https://mesonbuild.com/Quick-guide.html]
-
+`export MAKEFLAGS='-j$(nproc)'` (or however many cores you want to use) to the start of `build-tool-chain.sh`
 
 
 ## Makefile
@@ -87,15 +79,4 @@ The makefile supports building all of the benchmarks, linting the processor and 
 - **clean-taiga-sim** removes the taiga-sim (verilator simulation environment) build directory
 - **clean-logs** removes all generated logs
 - **clean** performs all clean-* commands
-
-
-
-
-
-
-
-
-
-
-
 
