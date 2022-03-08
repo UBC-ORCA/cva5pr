@@ -1,6 +1,6 @@
 # Taiga Project Wiki
 
-This readme contains the steps to build the toolchain required to run Benchmarks on Taiga in Verilator as well as using our project Makefile. 
+This readme contains the steps to build the toolchain required to run Benchmarks on CVA5 (formerly Taiga) in Verilator as well as using our project Makefile. 
 
 Head to our [Wiki Page](https://gitlab.com/sfu-rcl/taiga-project/-/wikis/home) for additional tutorials/documentation detailing:
 - How to run through simulation
@@ -10,7 +10,7 @@ Head to our [Wiki Page](https://gitlab.com/sfu-rcl/taiga-project/-/wikis/home) f
 
 # Taiga Project
 
-Top-level system wrapper for the Taiga Processor.
+Top-level system wrapper for the CVA5 Processor.
 
 
 ### Important
@@ -59,11 +59,11 @@ To speed up the installation process, add the line:
 
 ## Makefile
 
-The makefile supports building all of the benchmarks, linting the processor and running the benchmarks through the Verilator simulation environtment.  If Taiga sources are updated, the simulation environment is automatically rebuilt when attempting to run any benchmark.
+The makefile supports building all of the benchmarks, linting the processor and running the benchmarks through the Verilator simulation environtment.  If CVA5 sources are updated, the simulation environment is automatically rebuilt when attempting to run any benchmark.
 
 ### Commands
-- **lint** Performs a Verilator lint on the Taiga sources
-- **lint-full** Performs a Verilator lint -Wall on the Taiga sources
+- **lint** Performs a Verilator lint on the CVA5 sources
+- **lint-full** Performs a Verilator lint -Wall on the CVA5 sources
 
 - **build-coremark** Builds the coremark benchmark
 - **run-coremark-verilator** Runs the coremark benchmark in the verilator simulation environment.  (Note: coremark has a runtime of approximately 20 minutes). Logs to: logs/verilator.
@@ -76,7 +76,7 @@ The makefile supports building all of the benchmarks, linting the processor and 
 
 - **run-compliance-tests-verilator** Runs the compliance tests (rv32i and rv32im) in the verilator simulation environment. Logs to: logs/verilator/compliance for individual tests.
 
-- **clean-taiga-sim** removes the taiga-sim (verilator simulation environment) build directory
+- **clean-cva5-sim** removes the cva5-sim (verilator simulation environment) build directory
 - **clean-logs** removes all generated logs
 - **clean** performs all clean-* commands
 

@@ -10,10 +10,6 @@
 	path = benchmarks/riscv-compliance
 	url = git@gitlab.com:sfu-rcl/taiga-riscv-compliance.git
 	branch = taiga-sim
-[submodule "taiga"]
-	path = taiga
-	url = git@gitlab.com:sfu-rcl/Taiga.git
-	branch = master
 [submodule "gcc"]
 	path = tool-chain/gcc
 	url = https://github.com/gcc-mirror/gcc.git
@@ -42,3 +38,6 @@
 	path = benchmarks/taiga-example-c-project
 	url = git@gitlab.com:sfu-rcl/taiga-example-c-project.git
 	branch = master
+[submodule "cva5"]
+	path = cva5
+	url = https://github.com/openhwgroup/cva5.git
