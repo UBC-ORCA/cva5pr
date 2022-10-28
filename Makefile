@@ -19,7 +19,7 @@ VERILATOR_TRACE_FILE = $(TAIGA_PROJECT_ROOT)/logs/sim-trace/verilator_trace.vcd
 ###############################################################
 #Embench
 #Assumes binaries are in the BENCHMARK_DIR
-EMBENCH_DIR=benchmarks/embench
+EMBENCH_DIR=embench
 EMBENCH_LOG_DIR=$(TAIGA_PROJECT_ROOT)/logs/verilator/embench
 EMBENCH_BENCHMARKS =  \
 aha-mont64 \
@@ -78,78 +78,6 @@ $(EMBENCH_LOG_DIR)/%.log : $(EMBENCH_DIR)/build/bin/%.hw_init $(CVA5_SIM)
 
 run-embench-verilator: $(embench_logs)
 	cat $^ > logs/verilator/embench.log
-###############################################################
-
-
-###############################################################
-#Coremark
-COREMARK_DIR=benchmarks/taiga-coremark
-.PHONY: build-coremark
-build-coremark:
-	$(MAKE) -C  $(COREMARK_DIR) compile PORT_DIR=taiga ITERATIONS=5000;
-	cd $(MAKEFILE_DIR);
-	python3 $(ELF_TO_HW_INIT) $(ELF_TO_HW_INIT_OPTIONS) $(COREMARK_DIR)/coremark.bin $(COREMARK_DIR)/coremark.hw_init $(COREMARK_DIR)/coremark.sim_init
-
-.PHONY: run-coremark-verilator
-run-coremark-verilator : build-coremark $(CVA5_SIM)
-	mkdir -p logs/verilator
-	$(CVA5_SIM) \
-	  "/dev/null"\
-	  "/dev/null"\
-	  $(COREMARK_DIR)/coremark.hw_init\
-	  $(VERILATOR_TRACE_FILE)\
-	  > logs/verilator/coremark.log
-###############################################################
-
-
-###############################################################
-#Compliance Tests
-COMPLIANCE_DIR=benchmarks/riscv-compliance
-COMPLIANCE_LOG_DIR=$(TAIGA_PROJECT_ROOT)/logs/verilator/compliance
-COMPLIANCE_TARGET=rv32im
-.PHONY: run-compliance-tests-verilator
-run-compliance-tests-verilator: $(CVA5_SIM)
-	mkdir -p logs/verilator/compliance
-	$(MAKE) -C $(COMPLIANCE_DIR) clean
-	$(MAKE) -C $(COMPLIANCE_DIR)\
-	  RISCV_TARGET=taiga\
-	  RISCV_DEVICE=$(COMPLIANCE_TARGET)\
-	  RISCV_PREFIX=$(RISCV_PREFIX)\
-	  ELF_TO_HW_INIT_OPTIONS="$(ELF_TO_HW_INIT_OPTIONS)"\
-	  TAIGA_SIM_BINARY=$(CVA5_SIM)\
-	  VERILATOR_TRACE_FILE=$(VERILATOR_TRACE_FILE)\
-	  COMPLIANCE_LOG_DIR=$(COMPLIANCE_LOG_DIR)
-###############################################################
-
-
-###############################################################
-#Dhrystone
-DHRYSTONE_DIR=benchmarks/taiga-dhrystone
-.PHONY: run-dhrystone-verilator
-run-dhrystone-verilator : $(CVA5_SIM)
-	mkdir -p logs/verilator
-	$(MAKE) -C $(DHRYSTONE_DIR) all
-	$(CVA5_SIM) \
-	  "/dev/null"\
-	  "/dev/null"\
-	  $(DHRYSTONE_DIR)/dhrystone.hw_init\
-	  $(VERILATOR_TRACE_FILE)\
-	  > logs/verilator/dhrystone.log
-###############################################################
-
-###############################################################
-#Example C Project
-EXAMPLE_C_PROJECT_DIR=benchmarks/taiga-example-c-project
-.PHONY: run-example-c-project-verilator
-run-example-c-project-verilator : $(CVA5_SIM)
-	mkdir -p logs/verilator
-	$(MAKE) -C $(EXAMPLE_C_PROJECT_DIR) all
-	$(CVA5_SIM) \
-	  "/dev/null"\
-	  "/dev/null"\
-	  $(EXAMPLE_C_PROJECT_DIR)/hello_world.hw_init\
-	  $(VERILATOR_TRACE_FILE)\
-	  > logs/verilator/hello_world.log
 ###############################################################
 
 .PHONY: clean-logs

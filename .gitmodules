@@ -1,43 +1,6 @@
-[submodule "picolibc"]
-	path = tool-chain/picolibc
-	url = git@gitlab.com:sfu-rcl/taiga-picolibc.git
-	branch = main
-[submodule "embench"]
-	path = benchmarks/embench
-	url = git@gitlab.com:sfu-rcl/taiga-embench.git
-	branch = taiga-picolibc
-[submodule "riscv-compliance"]
-	path = benchmarks/riscv-compliance
-	url = git@gitlab.com:sfu-rcl/taiga-riscv-compliance.git
-	branch = taiga-sim
-[submodule "gcc"]
-	path = tool-chain/gcc
-	url = https://github.com/gcc-mirror/gcc.git
-	branch = releases/gcc-11
-[submodule "verilator"]
-	path = tool-chain/verilator
-	url = http://git.veripool.org/git/verilator
-	branch = master
-[submodule "binutils-gdb"]
-	path = tool-chain/binutils-gdb
-	url = git://sourceware.org/git/binutils-gdb.git
-	branch = binutils-2_36-branch
-[submodule "newlib-cygwin"]
-	path = tool-chain/newlib-cygwin
-	url = git://sourceware.org/git/newlib-cygwin.git
-	branch = master
-[submodule "benchmarks/taiga-coremark"]
-	path = benchmarks/taiga-coremark
-	url = git@gitlab.com:sfu-rcl/taiga-coremark.git
-	branch = master
-[submodule "benchmarks/taiga-dhrystone"]
-	path = benchmarks/taiga-dhrystone
-	url = git@gitlab.com:sfu-rcl/taiga-dhrystone.git
-	branch = master
-[submodule "benchmarks/taiga-example-c-project"]
-	path = benchmarks/taiga-example-c-project
-	url = git@gitlab.com:sfu-rcl/taiga-example-c-project.git
-	branch = master
 [submodule "cva5"]
 	path = cva5
 	url = https://github.com/openhwgroup/cva5.git
+[submodule "embench"]
+	path = embench
+	url = git@github.com:UBC-ORCA/embench-iot.git
