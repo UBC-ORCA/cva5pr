@@ -1,6 +1,3 @@
-[submodule "cva5"]
-	path = cva5
-	url = https://github.com/openhwgroup/cva5.git
 [submodule "embench"]
 	path = embench
 	url = git@github.com:UBC-ORCA/embench-iot.git
