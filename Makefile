@@ -1,7 +1,7 @@
 #python script creats ram init files for simulation and hardware
 ###############################################################
 RISCV_PREFIX ?= riscv32-unknown-elf-
-ELF_TO_HW_INIT_OPTIONS ?= $(RISCV_PREFIX) 0x80000000 65536
+ELF_TO_HW_INIT_OPTIONS ?= $(RISCV_PREFIX) 0x80000000 131072
 ###############################################################
 
 ###############################################################
@@ -23,31 +23,7 @@ EMBENCH_DIR=embench
 EMBENCH_TRACE_DIR=$(TAIGA_PROJECT_ROOT)/logs/sim-trace
 EMBENCH_LOG_DIR=$(TAIGA_PROJECT_ROOT)/logs/verilator/embench
 EMBENCH_BENCHMARKS =  \
-aha-mont64 \
-cfu \
-crc32 \
-cubic \
-edn \
-huffbench \
-matmult-int \
-md5sum \
-minver \
-nbody \
-nettle-aes \
-nettle-sha256 \
-nsichneu \
-picojpeg \
-primecount \
-qrduino \
-sglib-combined \
-slre \
-st \
-statemate \
-tarfind \
-ud \
-wikisort
-
-#cfu
+vfu
 
 #add file path to benchmarks
 embench_bins = $(addprefix $(EMBENCH_DIR)/build/bin/, $(EMBENCH_BENCHMARKS))
@@ -58,7 +34,7 @@ embench_logs = $(addprefix $(EMBENCH_LOG_DIR)/, $(addsuffix .log, $(EMBENCH_BENC
 .PHONY: build-embench
 build-embench :
 	cd $(EMBENCH_DIR);\
-	./build_all.py -v --clean --builddir=build --arch=riscv32 --chip=generic --board=cva5-picolibc --cflags="--specs=picolibc.specs --crt0=hosted -march=rv32ima -mabi=ilp32 -mcmodel=medlow -O2 -ffunction-sections" --ldflags="--specs=picolibc.specs --crt0=hosted -Xlinker --defsym=__mem_size=65536 -Wl,--print-memory-usage" --cc-input-pattern="-c {0}" --user-libs="-lm"
+	./build_all.py -v --clean --builddir=build --arch=riscv32 --chip=generic --board=cva5-picolibc --cflags="--specs=picolibc.specs --crt0=hosted -march=rv32imav -mabi=ilp32 -mcmodel=medlow -O2 -fno-tree-vectorize -ffunction-sections" --ldflags="--specs=picolibc.specs --crt0=hosted -Xlinker --defsym=__mem_size=131072 -Wl,--print-memory-usage" --cc-input-pattern="-c {0}" --user-libs="-lm"
 	mkdir -p $(EMBENCH_DIR)/build/bin
 	$(foreach x,$(EMBENCH_BENCHMARKS), mv $(EMBENCH_DIR)/build/src/$(x)/$(x) $(EMBENCH_DIR)/build/bin/$(x);)
 	
@@ -71,8 +47,8 @@ $(embench_hw_init) : %.hw_init : %
 
 #Run verilator
 $(EMBENCH_LOG_DIR)/%.log : $(EMBENCH_DIR)/build/bin/%.hw_init $(CVA5_SIM)
-	mkdir -p $(EMBENCH_TRACE_DIR)
 	mkdir -p $(EMBENCH_LOG_DIR)
+	mkdir -p $(EMBENCH_TRACE_DIR)
 	@echo $< > $@
 	$(CVA5_SIM) \
 	  "/dev/null"\
