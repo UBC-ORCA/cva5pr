@@ -60,6 +60,42 @@ $(EMBENCH_LOG_DIR)/%.log : $(EMBENCH_DIR)/build/bin/%.hw_init $(CVA5_SIM)
 run-embench-verilator: $(embench_logs)
 	cat $^ > logs/verilator/embench.log
 ###############################################################
+#RVV tests
+
+RVV_TESTS_DIR=rvv-tests
+RVV_TESTS_TRACE_DIR=$(TAIGA_PROJECT_ROOT)/logs/sim-trace
+RVV_TESTS_LOG_DIR=$(TAIGA_PROJECT_ROOT)/logs/verilator/rvv-tests
+
+include $(RVV_TESTS_DIR)/common/rvv_tests.mk
+
+rvv_tests_bins = $(addprefix $(RVV_TESTS_DIR)/build/bin/, $(rvv_tests))
+rvv_tests_hw_init = $(addprefix $(RVV_TESTS_DIR)/build/bin/, $(addsuffix .hw_init, $(rvv_tests)))
+rvv_tests_logs = $(addprefix $(RVV_TESTS_LOG_DIR)/, $(addsuffix .log, $(rvv_tests)))
+
+.PHONY: build-rvv-tests
+build-rvv-tests :
+	$(MAKE) -C $(RVV_TESTS_DIR)
+	
+.PHONY : $(rvv_tests_bins)
+
+$(rvv_tests_hw_init) : %.hw_init : %
+	python3 $(ELF_TO_HW_INIT) $(ELF_TO_HW_INIT_OPTIONS) $< $@ $<.sim_init
+
+$(RVV_TESTS_LOG_DIR)/%.log : $(RVV_TESTS_DIR)/build/bin/%.hw_init $(CVA5_SIM)
+	mkdir -p $(RVV_TESTS_LOG_DIR)
+	mkdir -p $(RVV_TESTS_TRACE_DIR)
+	@echo $< > $@
+	$(CVA5_SIM) \
+	  "/dev/null"\
+	  "/dev/null"\
+	  $<\
+	  $(VERILATOR_TRACE_FILE)\
+	  >> $@
+
+run-rvv-tests-verilator: $(rvv_tests_logs)
+	cat $^ > logs/verilator/rvv-tests.log
+
+###############################################################
 
 .PHONY: clean-logs
 clean-logs:
