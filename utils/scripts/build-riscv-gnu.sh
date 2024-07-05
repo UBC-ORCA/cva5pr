@@ -12,7 +12,7 @@ fi
 
 mkdir build
 pushd build
-../configure --prefix=$RISCV/gnu --with-arch=rv32imav --with-abi=ilp32
+../configure --prefix=$OPT_DIR/gnu --with-arch=rv32imav --with-abi=ilp32
 
 if [ $? -ne 0 ]; then
 	echo "issue with configuring gnu build"
