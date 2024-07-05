@@ -7,3 +7,12 @@
 [submodule "rvv-tests"]
 	path = rvv-tests
 	url = git@github.com:UBC-ORCA/rvv-tests.git
+[submodule "utils/riscv-gnu-toolchain"]
+	path = utils/riscv-gnu-toolchain
+	url = git@github.com:UBC-ORCA/riscv-gnu-toolchain.git
+[submodule "utils/picolibc"]
+	path = utils/picolibc
+	url = git@github.com:UBC-ORCA/picolibc.git
+[submodule "utils/verilator"]
+	path = utils/verilator
+	url = git@github.com:verilator/verilator.git
