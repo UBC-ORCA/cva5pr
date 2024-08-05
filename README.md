@@ -5,7 +5,9 @@ Top-level system wrapper for the CVA5 Processor.
 
 ### Background Information
 
-See these 2 submitted posters for the 2024 RISC-V Summit [https://github.com/UBC-ORCA/RISC-V_Summit_2024](https://github.com/UBC-ORCA/RISC-V_Summit_2024) as well as the [Draft Proposed Composable Custom Extensions Specification](https://github.com/grayresearch/CX).
+See these links for additional background information:
+* [Draft Papers Submitted to 2024 RISC-V_Summit North America](https://github.com/UBC-ORCA/RISC-V_Summit_2024)
+* [Draft Proposed Composable Custom Extensions Specification](https://github.com/grayresearch/CX)
 
 ### Important
 
