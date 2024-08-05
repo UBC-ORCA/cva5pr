@@ -23,7 +23,8 @@ EMBENCH_DIR=embench
 EMBENCH_TRACE_DIR=$(TAIGA_PROJECT_ROOT)/logs/sim-trace
 EMBENCH_LOG_DIR=$(TAIGA_PROJECT_ROOT)/logs/verilator/embench
 EMBENCH_BENCHMARKS =  \
-crc32
+crc32 \
+rgb2luma
 
 #add file path to benchmarks
 embench_bins = $(addprefix $(EMBENCH_DIR)/build/bin/, $(EMBENCH_BENCHMARKS))
