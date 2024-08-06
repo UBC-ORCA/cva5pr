@@ -3,6 +3,12 @@
 Top-level system wrapper for the CVA5 Processor.
 
 
+### Background Information
+
+See these links for additional background information:
+* [Draft Papers Submitted to 2024 RISC-V_Summit North America](https://github.com/UBC-ORCA/RISC-V_Summit_2024)
+* [Draft Proposed Composable Custom Extensions Specification](https://github.com/grayresearch/CX)
+
 ### Important
 
 Always run, from the root project directory, before using any other scripts or Makefiles. This has to be used each time a new terminal is used:
