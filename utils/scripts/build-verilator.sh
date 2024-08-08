@@ -5,7 +5,7 @@ unset VERILATOR_ROOT
 pushd $TAIGA_PROJECT_ROOT/utils/verilator
 
 git pull
-git checkout stable
+git checkout v5.004
 
 autoconf
 
