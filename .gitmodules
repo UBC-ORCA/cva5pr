@@ -16,7 +16,6 @@
 [submodule "utils/verilator"]
 	path = utils/verilator
 	url = git@github.com:verilator/verilator.git
-[submodule "cx_runtime"] 
-	path = cx_runtime
+[submodule "cx_runtime2.0"]
+	path = cx_runtime2.0
 	url = git@github.com:UBC-ORCA/cx_runtime2.0.git
-	branch = asplos
